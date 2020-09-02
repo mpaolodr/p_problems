@@ -70,3 +70,12 @@ waypoints[0]["name"] = "not a real place"
 for w in waypoints:
 
     print(w)
+
+
+test = ["a", "b"]
+test1 = {"a": "b"}
+
+
+a = list(test1.items())
+a.append(("c", "d"))
+print(a)
