@@ -34,6 +34,39 @@ def count7(n):
             return num
 
 
+def count7(n):
+
+    if type(n) == int:
+
+        str_n = str(n)
+
+    else:
+
+        str_n = n
+
+    if len(str_n) == 1:
+
+        if str_n == "7":
+
+            return 1
+
+        else:
+
+            return 0
+
+    else:
+
+        test = str_n[0]
+
+        if test == "7":
+
+            return 1 + count7(str_n[1:])
+
+        else:
+
+            return count7(str_n[1:])
+
+
 print(count7(710077))
 print(count7(1234567890))
 print(count7(123))
