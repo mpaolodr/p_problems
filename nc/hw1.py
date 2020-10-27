@@ -1,3 +1,6 @@
+import string
+
+
 def csWhereIsBob(names):
 
     for index, val in enumerate(names):
@@ -17,3 +20,27 @@ def csAlphanumericRestriction(input_str):
         return True
 
     return False
+
+
+def csOppositeReverse(txt):
+
+    upper = set(string.ascii_uppercase)
+    lower = set(string.ascii_lowercase)
+
+    new_txt = ""
+
+    for char in txt[::-1]:
+
+        if char in upper:
+
+            new_txt += char.lower()
+
+        elif char in lower:
+
+            new_txt += char.upper()
+
+        else:
+
+            new_txt += char
+
+    return new_txt
