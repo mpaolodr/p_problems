@@ -44,3 +44,18 @@ def csOppositeReverse(txt):
             new_txt += char
 
     return new_txt
+
+
+def csSquareAllDigits(n):
+
+    result = ""
+
+    to_string = str(n)
+
+    for char in to_string:
+
+        to_int = int(char)
+
+        result += str(to_int ** 2)
+
+    return int(result)
