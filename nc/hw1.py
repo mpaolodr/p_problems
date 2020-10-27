@@ -59,3 +59,17 @@ def csSquareAllDigits(n):
         result += str(to_int ** 2)
 
     return int(result)
+
+
+def csSchoolYearsAndGroups(years, groups):
+
+    res = list()
+    lowercase = list(string.ascii_lowercase)
+
+    for y in range(1, years + 1):
+
+        for g in range(1, groups + 1):
+
+            res.append(f"{y}{lowercase[g - 1]}")
+
+    return ", ".join(res)
