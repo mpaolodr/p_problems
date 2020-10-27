@@ -73,3 +73,14 @@ def csSchoolYearsAndGroups(years, groups):
             res.append(f"{y}{lowercase[g - 1]}")
 
     return ", ".join(res)
+
+
+def csMakeItJazzy(chords):
+
+    for i in range(len(chords)):
+
+        if chords[i][-1] != "7":
+
+            chords[i] = chords[i] + "7"
+
+    return chords
