@@ -1,3 +1,6 @@
+import string
+
+
 def removeEvens(numbers):
 
     for i in reversed(range(len(numbers))):
@@ -36,3 +39,28 @@ def even_median(arr):
     mid2 = mid1 - 1
 
     return (arr[mid1] + arr[mid2]) / 2
+
+
+def increasingSubstrings(s):
+
+    letters = list(string.ascii_letters)
+
+    results = list()
+    pointer = 0
+
+    for i in range(len(s)):
+
+        if i < len(s) - 1:
+
+            next_in_letters = letters[letters.index(s[i + 1]) - 1]
+
+            if next_in_letters != s[i]:
+
+                results.append(s[pointer: i + 1])
+                pointer = i + 1
+
+        else:
+
+            results.append(s[pointer: i + 1])
+
+    return results
