@@ -1,3 +1,4 @@
+from typing import List
 import string
 
 
@@ -64,3 +65,31 @@ def increasingSubstrings(s):
             results.append(s[pointer: i + 1])
 
     return results
+
+
+# sol code
+
+
+# def char_is_next(a: str, b: str) -> bool:
+#     return ord(a) + 1 == ord(b)
+
+
+# def increasingSubstrings(s: str) -> List[str]:
+#     if len(s) == 1:
+#         return [s]
+
+#     output = []
+#     a, b = 0, 1
+
+#     while b < len(s):
+#         if not char_is_next(s[b - 1], s[b]):
+#             output.append(s[a:b])
+#             a = b
+
+#         if b + 1 == len(s):
+#             output.append(s[a:b + 1])
+#             break
+
+#         b += 1
+
+#     return output

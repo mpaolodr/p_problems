@@ -61,18 +61,49 @@ def csSquareAllDigits(n):
     return int(result)
 
 
-def csSchoolYearsAndGroups(years, groups):
+# def csSchoolYearsAndGroups(years, groups):
 
-    res = list()
-    lowercase = list(string.ascii_lowercase)
+#     res = list()
+#     lowercase = list(string.ascii_lowercase)
 
-    for y in range(1, years + 1):
+#     for y in range(1, years + 1):
 
-        for g in range(1, groups + 1):
+#         for g in range(1, groups + 1):
 
-            res.append(f"{y}{lowercase[g - 1]}")
+#             res.append(f"{y}{lowercase[g - 1]}")
 
-    return ", ".join(res)
+#     return ", ".join(res)
+
+# Libby Thomas Solution
+# def csSchoolYearsAndGroups(years, groups):
+
+#     results = ["1a", "1b"]
+
+#     for x in range(1, years + 1):
+
+#         year_num = x
+#         year_list = []
+#         year_list.append(year_num)
+
+#         for y in range(1, groups + 1):
+
+#             group_letter = chr(ord("`") + y)
+#             group_list = []
+#             group_list.append(group_letter)
+
+#             for number in year_list:
+
+#                 for letter in group_list:
+
+#                     another_list = []
+#                     year_and_group = "%d%s" % (number, letter)
+#                     another_list.append(year_and_group)
+#                     results.append(another_list[0])
+
+#     return ", ".join(results)
+
+
+print(csSchoolYearsAndGroups(700, 25))
 
 
 def csMakeItJazzy(chords):
