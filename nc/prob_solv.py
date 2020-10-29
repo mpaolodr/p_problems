@@ -26,3 +26,16 @@ def csShortestWord(input_str):
             shortest_word = len(word)
 
     return shortest_word
+
+
+def csSumOfPositive(input_arr):
+
+    sum_of_pos = 0
+
+    for num in input_arr:
+
+        if num > 0:
+
+            sum_of_pos += num
+
+    return sum_of_pos
