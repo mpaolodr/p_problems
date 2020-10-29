@@ -48,3 +48,31 @@ def csLongestPossible(str_1, str_2):
     result = "".join(sorted(list(combined)))
 
     return result
+
+
+def csAnythingButFive(start, end):
+
+    count = 0
+
+    for num in range(start, end + 1):
+
+        num_check = check_five(num)
+
+        if num_check == False:
+
+            count += 1
+
+    return count
+
+
+def check_five(n):
+
+    to_string = str(n)
+
+    for char in to_string:
+
+        if char == "5":
+
+            return True
+
+    return False
