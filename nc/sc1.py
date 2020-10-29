@@ -24,3 +24,12 @@ def reverse_String(input):
         last -= 1
 
     return input
+
+
+def checkPalindrome(inputString):
+
+    if inputString == inputString[::-1]:
+
+        return True
+
+    return False
