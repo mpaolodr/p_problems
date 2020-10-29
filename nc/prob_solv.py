@@ -39,3 +39,12 @@ def csSumOfPositive(input_arr):
             sum_of_pos += num
 
     return sum_of_pos
+
+
+def csLongestPossible(str_1, str_2):
+
+    combined = set(str_1).union(set(str_2))
+
+    result = "".join(sorted(list(combined)))
+
+    return result
