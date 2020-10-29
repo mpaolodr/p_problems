@@ -11,3 +11,18 @@ def csRemoveTheVowels(input_str):
             input_copy = input_copy[:i] + input_copy[i + 1:]
 
     return input_copy
+
+
+def csShortestWord(input_str):
+
+    string_split = input_str.split()
+
+    shortest_word = len(string_split[0])
+
+    for word in string_split:
+
+        if len(word) < shortest_word:
+
+            shortest_word = len(word)
+
+    return shortest_word
