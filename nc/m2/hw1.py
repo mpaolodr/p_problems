@@ -46,3 +46,34 @@ def alphabeticShift(inputString):
         to_list[i] = lowercase[(index_of_let + 1) % len(lowercase)]
 
     return "".join(to_list)
+
+
+def validParenthesesSequence(s):
+
+    if len(s) == 0:
+
+        return True
+
+    checker = list()
+
+    for p in s:
+
+        if p == "(":
+
+            checker.append(p)
+
+        else:
+
+            try:
+
+                checker.pop()
+
+            except IndexError:
+
+                return False
+
+    if len(checker) > 0:
+
+        return False
+
+    return True
