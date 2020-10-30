@@ -26,7 +26,9 @@ def last(a, n):
 
         return list()
 
-    return a[len(a) - n:]
+    # return a[len(a) - n:]
+    # goes backward starting from end of list
+    return a[-n:]
 
 
 list1 = [1, 2, 3, 4, 5]
@@ -35,6 +37,7 @@ list2 = [4, 3, 9, 9, 7, 6]
 
 print(last(list1, 1))
 print(last(list2, 3))
+print(last(list2, 2))
 print(last(list1, 7))
 print(last(list1, 0))
 print(last(list1, 3))
