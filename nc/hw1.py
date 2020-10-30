@@ -115,3 +115,16 @@ def csMakeItJazzy(chords):
             chords[i] = chords[i] + "7"
 
     return chords
+
+
+# def csMakeItJazzy(chords):
+
+#     alpha = ["a", "b"]
+
+#     new_c = [f"{c}7" if c[-1] !=
+#              "7" else c for c in chords if c.startswith("G")]
+
+    return new_c
+
+
+print(csMakeItJazzy(["G7", "E", "F7"]))
