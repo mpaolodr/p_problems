@@ -1,3 +1,6 @@
+import string
+
+
 def buyAndSellStock(prices):
 
     if len(prices) == 1:
@@ -29,3 +32,17 @@ def buyAndSellStock(prices):
         min_price = min(min_price, cur_price)
 
     return max_profit if max_profit > 0 else 0
+
+
+def alphabeticShift(inputString):
+
+    to_list = list(inputString)
+    lowercase = list(string.ascii_lowercase)
+
+    for i in range(len(to_list)):
+
+        index_of_let = lowercase.index(to_list[i])
+
+        to_list[i] = lowercase[(index_of_let + 1) % len(lowercase)]
+
+    return "".join(to_list)
