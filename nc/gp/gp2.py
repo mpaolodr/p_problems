@@ -230,3 +230,40 @@ print(data_type([1, 2, 3, 4]))  # ➞ "list"
 print(data_type({'key': "value"}))  # ➞ "dictionary"
 print(data_type("This is an example string."))  # ➞ "string"
 print(data_type(datetime.date(2018, 1, 1)))  # ➞ "date"
+
+
+"""
+Challenge #9:
+
+Given a string, write a function that returns the "middle" character of the
+word.
+
+If the word has an odd length, return the single middle character. If the word
+has an even length, return the middle two characters.
+
+Examples:
+- get_middle("test") -> "es"
+- get_middle("testing") -> "t"
+- get_middle("middle") -> "dd"
+- get_middle("A") -> "A"
+"""
+
+
+def get_middle(input_str):
+    # Your code here
+
+    pointer1 = 0
+    pointer2 = len(input_str) - 1
+
+    while pointer1 < pointer2 - 1:
+
+        pointer1 += 1
+        pointer2 -= 1
+
+    return input_str[pointer1: pointer2 + 1]
+
+
+print(get_middle("test"))
+print(get_middle("testing"))
+print(get_middle("middle"))
+print(get_middle("A"))
