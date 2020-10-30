@@ -109,3 +109,54 @@ print(multiply_nums("2, 3"))
 print(multiply_nums("1, 2, 3, 4"))
 print(multiply_nums("54, 75, 453, 0"))
 print(multiply_nums("10, -2"))
+
+
+"""
+Challenge #4:
+
+Create a function that changes specific words into emoticons. Given a sentence
+as a string, replace the words `smile`, `grin`, `sad`, and `mad` with their
+corresponding emoticons.
+
+word -> emoticon
+---
+smile -> :D
+grin -> :)
+sad -> :(
+mad	-> :P
+
+Examples:
+- emotify("Make me smile") ➞ "Make me :D"
+- emotify("Make me grin") ➞ "Make me :)"
+- emotify("Make me sad") ➞ "Make me :("
+
+Notes:
+- The sentence always starts with "Make me".
+- Try to solve this without using conditional statements like if/else.
+"""
+
+
+def emotify(txt):
+    # Your code here
+
+    emojis = {
+        "smile": ":D",
+        "grin": ":)",
+        "sad": ":(",
+        "mad": ":P"
+    }
+
+    emojified = txt.split()
+
+    for i in range(len(emojified)):
+
+        if emojified[i] in emojis:
+
+            emojified[i] = emojis[emojified[i]]
+
+    return " ".join(emojified)
+
+
+print(emotify("Make me smile"))  # ➞ "Make me :D"
+print(emotify("Make me grin"))  # ➞ "Make me :)"
+print(emotify("Make me sad"))  # ➞ "Make me :("
