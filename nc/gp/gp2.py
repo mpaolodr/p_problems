@@ -149,18 +149,37 @@ def emotify(txt):
         "mad": ":P"
     }
 
-    emojified = txt.split()
+    # emojified = txt.split()
 
-    for i in range(len(emojified)):
+    # for i in range(len(emojified)):
 
-        if emojified[i] in emojis:
+    #     if emojified[i] in emojis:
 
-            emojified[i] = emojis[emojified[i]]
+    #         emojified[i] = emojis[emojified[i]]
 
-    return " ".join(emojified)
+    # return " ".join(emojified)
+
+    # OR
+
+    # for key in emojis:
+
+    #     if key in txt:
+
+    #         txt.replace(key, emojis[key])
+    #         return txt
+
+    # OR
+
+    new_txt = txt
+
+    for k, v in emojis.items():
+
+        new_txt = new_txt.replace(k, v)
+
+    return new_txt
 
 
-print(emotify("Make me smile"))  # ➞ "Make me :D"
+print(emotify("Make me smile, make me mad, make me sad"))  # ➞ "Make me :D"
 print(emotify("Make me grin"))  # ➞ "Make me :)"
 print(emotify("Make me sad"))  # ➞ "Make me :("
 
