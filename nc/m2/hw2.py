@@ -197,3 +197,46 @@ def mergeTwoLinkedLists(l1, l2):
         pointer_2 = pointer_2.next
 
     return new_ll
+
+
+# Singly-linked lists are already defined with this interface:
+# class ListNode(object):
+#   def __init__(self, x):
+#     self.value = x
+#     self.next = None
+#
+def insertValueIntoSortedLinkedList(l, value):
+
+    if l is None:
+
+        new_node = ListNode(value)
+        l = new_node
+
+        return l
+
+    if value < l.value:
+
+        new_node = ListNode(value)
+        new_node.next = l
+
+        return new_node
+
+    # traverse the list until end or until we find a node where value is less than the value of that node
+    cur = l
+    prev = None
+
+    while cur is not None:
+
+        if value < cur.value:
+
+            break
+
+        prev = cur
+        cur = cur.next
+
+    new_node = ListNode(value)
+
+    prev.next = new_node
+    new_node.next = cur
+
+    return l
