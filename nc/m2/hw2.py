@@ -1,242 +1,289 @@
 # Singly-linked lists are already defined with this interface:
-# class ListNode(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.value = x
+        self.next = None
 #
+
+# TEST
+
+
+ll = ListNode(1)
+ll.next = ListNode(2)
+ll.next.next = ListNode(3)
+ll.next.next.next = ListNode(4)
+ll.next.next.next.next = ListNode(5)
 
 
 def reverseNodesInKGroups(l, k):
 
-    if l.next is None or k == 1:
-
-        return l
-
-    # if find_target returns None, no need to do anything
-    cur = l
-    prev = None
-
-    num_eval = get_length(l) // k
-
-    new_ll = None
-
-    while num_eval > 0:
-
-        # find target node which we'll use to stop reversal from current node
-        target_node = find_target(cur, k)
-
-        if target_node is None:
-
-            return new_ll
-
-        # grab target's next_node
-        target_next_node = target_node.next
-
-        # reverse from current node to target_node
-        head, tail = reverser(cur, target_node)
-
-        # meaning this is the first evaluation, we set the reversed head to be the new head of modified list
-        if new_ll is None:
-
-            new_ll = head
-
-        # meaning this is the first evaluation and previous pointer hasn't moved yet
-        if prev is not None:
-
-            prev.next = head
-
-        # after reversal, we set the next node of the target to be the new tail's next node
-        tail.next = target_next_node
-
-        prev = tail
-        cur = tail.next
-
-        num_eval -= 1
-
-    return new_ll
-
-
-def find_target(l, k):
-    """
-    Find the node we want to end the reversal
-    """
+    # study. I don't get this
+    # check if length is less than k
 
     cur = l
-    stopper = 0
 
-    while cur is not None:
+    for _ in range(k):
 
-        if stopper == k - 1:
+        if cur is None:
 
-            break
+            return l
 
         cur = cur.next
-        stopper += 1
 
-    return cur
+    prev, cur = l, l.next
 
+    for node in range(k - 1):
 
-def reverser(head, target_node):
-    """
-    returns the head and tail of the reversed list
-    """
+        cur.next, cur, prev = prev, cur.next, cur
 
-    cur = head
-    prev = None
+    l.next = reverseNodesInKGroups(cur, k)
 
-    while cur is not target_node:
+    return prev
 
-        prev_next = cur.next
 
-        cur.next = prev
+# reverseNodesInKGroups(ll, 3)
+new_ll = reverseNodesInKGroups(ll, 3)
 
-        prev = cur
-        cur = prev_next
+cur = new_ll
 
-    prev_next = cur.next
-    cur.next = prev
+while cur is not None:
 
-    tail = head
-    head = cur
+    print(cur.value)
 
-    return head, tail
+    cur = cur.next
 
 
-def get_length(l):
-    """
-    get the length of the linked list
-    """
+# def reverseNodesInKGroups(l, k):
 
-    cur = l
-    length = 0
+#     if l.next is None or k == 1:
 
-    while cur is not None:
+#         return l
 
-        length += 1
-        cur = cur.next
+#     # if find_target returns None, no need to do anything
+#     cur = l
+#     prev = None
 
-    return length
+#     num_eval = get_length(l) // k
 
+#     new_ll = None
 
-# Singly-linked lists are already defined with this interface:
-# class ListNode(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.next = None
-#
-def mergeTwoLinkedLists(l1, l2):
+#     while num_eval > 0:
 
-    if l1 is None and l2 is not None:
+#         # find target node which we'll use to stop reversal from current node
+#         target_node = find_target(cur, k)
 
-        return l2
+#         if target_node is None:
 
-    if l2 is None and l1 is not None:
+#             return new_ll
 
-        return l1
+#         # grab target's next_node
+#         target_next_node = target_node.next
 
-    pointer_1 = l1
-    pointer_2 = l2
+#         # reverse from current node to target_node
+#         head, tail = reverser(cur, target_node)
 
-    new_ll = None
-    pointer_3 = None
+#         # meaning this is the first evaluation, we set the reversed head to be the new head of modified list
+#         if new_ll is None:
 
-    while pointer_1 is not None and pointer_2 is not None:
+#             new_ll = head
 
-        if new_ll is None:
+#         # meaning this is the first evaluation and previous pointer hasn't moved yet
+#         if prev is not None:
 
-            if pointer_1.value < pointer_2.value:
+#             prev.next = head
 
-                new_ll = ListNode(pointer_1.value)
-                pointer_1 = pointer_1.next
+#         # after reversal, we set the next node of the target to be the new tail's next node
+#         tail.next = target_next_node
 
-                pointer_3 = new_ll
+#         prev = tail
+#         cur = tail.next
 
-            else:
+#         num_eval -= 1
 
-                new_ll = ListNode(pointer_2.value)
-                pointer_2 = pointer_2.next
+#     return new_ll
 
-                pointer_3 = new_ll
 
-        else:
+# def find_target(l, k):
+#     """
+#     Find the node we want to end the reversal
+#     """
 
-            if pointer_1.value < pointer_2.value:
+#     cur = l
+#     stopper = 0
 
-                new_node = ListNode(pointer_1.value)
+#     while cur is not None:
 
-                pointer_3.next = new_node
-                pointer_3 = pointer_3.next
+#         if stopper == k - 1:
 
-                pointer_1 = pointer_1.next
+#             break
 
-            else:
+#         cur = cur.next
+#         stopper += 1
 
-                new_node = ListNode(pointer_2.value)
+#     return cur
 
-                pointer_3.next = new_node
-                pointer_3 = pointer_3.next
 
-                pointer_2 = pointer_2.next
+# def reverser(head, target_node):
+#     """
+#     returns the head and tail of the reversed list
+#     """
 
-    while pointer_1 is not None:
+#     cur = head
+#     prev = None
 
-        new_node = ListNode(pointer_1.value)
+#     while cur is not target_node:
 
-        pointer_3.next = new_node
-        pointer_3 = pointer_3.next
+#         prev_next = cur.next
 
-        pointer_1 = pointer_1.next
+#         cur.next = prev
 
-    while pointer_2 is not None:
+#         prev = cur
+#         cur = prev_next
 
-        new_node = ListNode(pointer_2.value)
+#     prev_next = cur.next
+#     cur.next = prev
 
-        pointer_3.next = new_node
-        pointer_3 = pointer_3.next
+#     tail = head
+#     head = cur
 
-        pointer_2 = pointer_2.next
+#     return head, tail
 
-    return new_ll
 
+# def get_length(l):
+#     """
+#     get the length of the linked list
+#     """
 
-# Singly-linked lists are already defined with this interface:
-# class ListNode(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.next = None
-#
-def insertValueIntoSortedLinkedList(l, value):
+#     cur = l
+#     length = 0
 
-    if l is None:
+#     while cur is not None:
 
-        new_node = ListNode(value)
-        l = new_node
+#         length += 1
+#         cur = cur.next
 
-        return l
+#     return length
 
-    if value < l.value:
 
-        new_node = ListNode(value)
-        new_node.next = l
+# # Singly-linked lists are already defined with this interface:
+# # class ListNode(object):
+# #   def __init__(self, x):
+# #     self.value = x
+# #     self.next = None
+# #
+# def mergeTwoLinkedLists(l1, l2):
 
-        return new_node
+#     if l1 is None and l2 is not None:
 
-    # traverse the list until end or until we find a node where value is less than the value of that node
-    cur = l
-    prev = None
+#         return l2
 
-    while cur is not None:
+#     if l2 is None and l1 is not None:
 
-        if value < cur.value:
+#         return l1
 
-            break
+#     pointer_1 = l1
+#     pointer_2 = l2
 
-        prev = cur
-        cur = cur.next
+#     new_ll = None
+#     pointer_3 = None
 
-    new_node = ListNode(value)
+#     while pointer_1 is not None and pointer_2 is not None:
 
-    prev.next = new_node
-    new_node.next = cur
+#         if new_ll is None:
 
-    return l
+#             if pointer_1.value < pointer_2.value:
+
+#                 new_ll = ListNode(pointer_1.value)
+#                 pointer_1 = pointer_1.next
+
+#                 pointer_3 = new_ll
+
+#             else:
+
+#                 new_ll = ListNode(pointer_2.value)
+#                 pointer_2 = pointer_2.next
+
+#                 pointer_3 = new_ll
+
+#         else:
+
+#             if pointer_1.value < pointer_2.value:
+
+#                 new_node = ListNode(pointer_1.value)
+
+#                 pointer_3.next = new_node
+#                 pointer_3 = pointer_3.next
+
+#                 pointer_1 = pointer_1.next
+
+#             else:
+
+#                 new_node = ListNode(pointer_2.value)
+
+#                 pointer_3.next = new_node
+#                 pointer_3 = pointer_3.next
+
+#                 pointer_2 = pointer_2.next
+
+#     while pointer_1 is not None:
+
+#         new_node = ListNode(pointer_1.value)
+
+#         pointer_3.next = new_node
+#         pointer_3 = pointer_3.next
+
+#         pointer_1 = pointer_1.next
+
+#     while pointer_2 is not None:
+
+#         new_node = ListNode(pointer_2.value)
+
+#         pointer_3.next = new_node
+#         pointer_3 = pointer_3.next
+
+#         pointer_2 = pointer_2.next
+
+#     return new_ll
+
+
+# # Singly-linked lists are already defined with this interface:
+# # class ListNode(object):
+# #   def __init__(self, x):
+# #     self.value = x
+# #     self.next = None
+# #
+# def insertValueIntoSortedLinkedList(l, value):
+
+#     if l is None:
+
+#         new_node = ListNode(value)
+#         l = new_node
+
+#         return l
+
+#     if value < l.value:
+
+#         new_node = ListNode(value)
+#         new_node.next = l
+
+#         return new_node
+
+#     # traverse the list until end or until we find a node where value is less than the value of that node
+#     cur = l
+#     prev = None
+
+#     while cur is not None:
+
+#         if value < cur.value:
+
+#             break
+
+#         prev = cur
+#         cur = cur.next
+
+#     new_node = ListNode(value)
+
+#     prev.next = new_node
+#     new_node.next = cur
+
+#     return l
