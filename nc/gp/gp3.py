@@ -52,3 +52,33 @@ def two_sum(nums, target):
 
 print(two_sum([2, 5, 9, 13], 7))
 print(two_sum([4, 3, 5], 8))
+
+
+"""
+Demonstration #2
+
+Given a non-empty array of integers `nums`, every element appears twice except except for one. Write a function that finds the element that only appears once.
+
+Examples:
+
+- single_number([3,3,2]) -> 2
+- single_number([5,2,3,2,3]) -> 5
+- single_number([10]) -> 10
+"""
+
+
+def single_number(nums):
+    # Your code here
+
+    res = 0
+
+    for num in nums:
+
+        res ^= num
+
+    return res
+
+
+print(single_number([3, 3, 2]))
+print(single_number([5, 2, 3, 2, 3]))
+print(single_number([10]))
