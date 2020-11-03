@@ -70,13 +70,31 @@ Examples:
 def single_number(nums):
     # Your code here
 
-    res = 0
+    # res = 0
+
+    # for num in nums:
+
+    #     res ^= num
+
+    # return res
+
+    num_count = dict()
 
     for num in nums:
 
-        res ^= num
+        if num not in num_count:
 
-    return res
+            num_count[num] = 0
+
+        num_count[num] += 1
+
+    for key in num_count:
+
+        if num_count[key] == 1:
+
+            return key
+
+    return -1
 
 
 print(single_number([3, 3, 2]))
