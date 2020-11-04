@@ -54,33 +54,20 @@ def csFirstUniqueChar(input_str):
 
 
 def csFindAddedLetter(str_1, str_2):
-    m = len(str_1)
-    n = len(str_2)
 
-    j = 0    # Index of str1
-    i = 0    # Index of str2
+    result = [char for char in set(
+        str_2) if str_1.count(char) != str_2.count(char)][0]
 
-    while j < m and i < n:
-
-        # if there's a mismatch, that's the added string so we return that
-        if str_1[j] != str_2[i]:
-
-            return str_2[i]
-
-        # no mismatch, we just increment both pointers (j and i)
-        i += 1
-        j += 1
-
-    # exits the while loop
-
-    return str_2[i]
+    return result
 
 
-print(csFindAddedLetter("bcde", "bcdef"))
-print(csFindAddedLetter("", "z"))
-print(csFindAddedLetter("b", "bb"))
-print(csFindAddedLetter("f", "bfb"))
-print(csFindAddedLetter("xqmxtheyvpdqounqmfyaqdqxwe", "xqmxtheyvpdqounqmfyaqxdqxwe"))
+print(csFindAddedLetter("bcde", "bcdef"), "TEST 1")
+print(csFindAddedLetter("", "z"), "TEST 2")
+print(csFindAddedLetter("b", "bb"), "TEST 3")
+print(csFindAddedLetter("bf", "bfb"), "TEST 4")
+print(csFindAddedLetter("xqmxtheyvpdqounqmfyaqdqxwe",
+                        "xqmxtheyvpdqounqmfyaqxdqxwe"), "TEST 5")
+print(csFindAddedLetter("abcd", "dcbae"), "TEST 6")
 
 
 def csSortedTwoSum(numbers, target):
