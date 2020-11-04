@@ -44,27 +44,58 @@ def even_median(arr):
 
 def increasingSubstrings(s):
 
-    letters = list(string.ascii_letters)
-
     results = list()
-    pointer = 0
+    prev = 0
 
     for i in range(len(s)):
 
         if i < len(s) - 1:
 
-            next_in_letters = letters[letters.index(s[i + 1]) - 1]
+            next_letter = ord(s[i + 1])
+            cur_letter = ord(s[i])
 
-            if next_in_letters != s[i]:
+            if next_letter - cur_letter != 1:
 
-                results.append(s[pointer: i + 1])
-                pointer = i + 1
+                results.append(s[prev:i + 1])
+                prev = i + 1
 
         else:
 
-            results.append(s[pointer: i + 1])
+            results.append(s[prev: i + 1])
 
     return results
+
+
+print(increasingSubstrings("ABCDEFFDEfghCBA"))
+print(increasingSubstrings("abcDEFAaaA"))
+print(increasingSubstrings("TuVwXYZ"))
+print(increasingSubstrings("ABCDEFGHIJKLNMOPQRSTUVWXYZ"))
+print(increasingSubstrings("abababaabbaabab"))
+
+
+# def increasingSubstrings(s):
+
+#     letters = list(string.ascii_letters)
+
+#     results = list()
+#     pointer = 0
+
+#     for i in range(len(s)):
+
+#         if i < len(s) - 1:
+
+#             next_in_letters = letters[letters.index(s[i + 1]) - 1]
+
+#             if next_in_letters != s[i]:
+
+#                 results.append(s[pointer: i + 1])
+#                 pointer = i + 1
+
+#         else:
+
+#             results.append(s[pointer: i + 1])
+
+#     return results
 
 
 # sol code
