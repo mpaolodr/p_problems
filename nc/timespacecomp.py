@@ -51,3 +51,30 @@ def csFindAddedLetter(str_1, str_2):
         if k not in dict_str_1 or dict_str_2[k] != dict_str_1[k]:
 
             return k
+
+
+def csSortedTwoSum(numbers, target):
+
+    num_dict = dict()
+
+    for i in range(len(numbers)):
+
+        if numbers[i] not in num_dict:
+
+            num_dict[numbers[i]] = list()
+
+        num_dict[numbers[i]].append(i)
+
+    for k in num_dict:
+
+        needed = target - k
+
+        if needed in num_dict:
+
+            if len(num_dict[needed]) > 1:
+
+                return [num_dict[needed][0], num_dict[needed][1]]
+
+            else:
+
+                return [min(num_dict[needed][0], num_dict[k][0]), max(num_dict[needed][0], num_dict[k][0])]
