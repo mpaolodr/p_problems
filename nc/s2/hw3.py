@@ -43,3 +43,45 @@ def queueOnStacks(requests):
         else:
             ans.append(remove())
     return ans
+
+
+def validBracketSequence(sequence):
+
+    if sequence == "":
+
+        return True
+
+    pair = {
+        "(": ")",
+        "{": "}",
+        "[": "]"
+    }
+
+    s = []
+
+    for char in sequence:
+
+        # since by default, we're checking the keys of a dictionary
+        if char in pair:
+
+            s.append(char)
+
+        else:
+
+            try:
+
+                opening = s.pop()
+
+            except IndexError:
+
+                return False
+
+            if char != pair[opening]:
+
+                return False
+
+    if len(s) > 0:
+
+        return False
+
+    return True
