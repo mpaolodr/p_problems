@@ -68,3 +68,55 @@ def height(n):
         level_set.add(l[0])
 
     return max(level_set)
+
+
+def minimumDepthBinaryTree(root):
+
+    if root is None:
+
+        return 0
+
+    paths = list()
+
+    s = [[root]]
+
+    while len(s) > 0:
+
+        p = s.pop()
+
+        node = p[-1]
+
+        if node != root:
+
+            if len(paths) > 0:
+
+                replaced = False
+
+                for i in range(len(paths)):
+
+                    nodes_in_p = {n.value for n in p}
+
+                    if paths[i][-1] in nodes_in_p:
+
+                        paths[i] = [node.value for node in p]
+                        replaced = True
+
+                if not replaced:
+
+                    paths.append([node.value for node in p])
+
+            else:
+
+                paths.append([node.value for node in p])
+
+        if node.left is not None:
+
+            p_copy = list(p) + [node.left]
+            s.append(p_copy)
+
+        if node.right is not None:
+
+            p_copy = list(p) + [node.right]
+            s.append(p_copy)
+
+    return min([len(p) for p in paths]) if len(paths) > 0 else 1
