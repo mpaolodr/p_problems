@@ -1,3 +1,26 @@
+# def csRemoveTheVowels(input_str):
+
+#     vowels = {"a", "e", "i", "o", "u", "A", "I", "E", "O", "U"}
+
+#     input_copy = input_str.lower()
+
+#     for x in input_str:
+
+#         print(input_copy)
+
+#         if x in vowels:
+
+#             input_copy = input_copy.replace(x, "")
+
+#     return input_copy
+
+
+# print(csRemoveTheVowels(
+#     "f!a fbs,rI\\H[P^f}!h;!<\tyu>/`uD^d,xGDWPj{HU$m~$|_e#"))
+# print(csRemoveTheVowels("aabcde"))
+# print(csRemoveTheVowels("aaaaaaeeeeeeb"))
+
+
 def csRemoveTheVowels(input_str):
 
     vowels = {"a", "e", "i", "o", "u", "A", "I", "E", "O", "U"}
