@@ -40,11 +40,9 @@ def csFirstUniqueChar(input_str):
         chars = list(input_str)
         # nums = range(len(input_str))
         nums = range(len(input_str) + 1)
-        # char_dict = dict(zip(chars, nums))
+        char_dict = dict(zip(chars, nums))
 
-        for a, b in zip(chars, nums):
-
-            print(a, b)
+        print(char_dict)
 
         # print(chars, "<- CHARS")
         # # print(nums, "<- NUMS")
