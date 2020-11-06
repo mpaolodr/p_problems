@@ -38,27 +38,28 @@ def csFirstUniqueChar(input_str):
     else:
 
         chars = list(input_str)
-        # nums = range(len(input_str))
-        nums = range(len(input_str) + 1)
-        char_dict = dict(zip(chars, nums))
+        char_dict = dict()
 
-        print(char_dict)
+        for c in chars:
 
-        # print(chars, "<- CHARS")
-        # # print(nums, "<- NUMS")
-        # # print(char_dict, "<- THIS IS THE CHAR_DICT")
-        # min_n = min(char_dict.values())
+            if c not in char_dict:
 
-        # if min_n == (len(input_str)-1):
+                char_dict[c] = 0
 
-        #     return none
+            char_dict[c] += 1
 
-        # else:
+        for i, c in enumerate(input_str):
 
-        #     return min_n
+            if char_dict[c] == 1:
+
+                return i
+
+        else:
+
+            return -1
 
 
-# print(csFirstUniqueChar("abc"))  # a - 0
+print(csFirstUniqueChar("abc"))  # a - 0
 print(csFirstUniqueChar("aaaaabc"))  # b - 5
 print(csFirstUniqueChar("aaa"))  # -1
 print(csFirstUniqueChar("aabbc"))  # c - 4
