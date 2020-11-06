@@ -118,3 +118,39 @@ def goodSubstrings(strToSplit, k):
     results.append(sub_s)
 
     return len(results)
+
+
+def csBinaryToASCII(binary):
+
+    if len(binary) == 0:
+
+        return ""
+
+    lst_bin = list()
+
+    i = 1
+
+    new_str = binary[0]
+
+    while i < len(binary):
+
+        if i % 8 != 0:
+
+            new_str += binary[i]
+
+        elif i % 8 == 0:
+
+            lst_bin.append(new_str)
+            new_str = binary[i]
+
+        i += 1
+
+    lst_bin.append(new_str)
+
+    result = ""
+
+    for num in lst_bin:
+
+        result += chr(int(num, base=2))
+
+    return result

@@ -1,28 +1,69 @@
+# def csFirstUniqueChar(input_str):
+
+#     if len(set(input_str)) == 1 or len(input_str) == 0:
+
+#         return -1
+
+#     char_dict = dict()
+
+#     for i in range(len(input_str)):
+
+#         if input_str[i] not in char_dict:
+
+#             char_dict[input_str[i]] = 0
+
+#         char_dict[input_str[i]] += 1
+
+#     for c in range(len(input_str)):
+
+#         if char_dict[input_str[c]] == 1:
+
+#             return c
+
+#     else:
+
+#         return -1
+
+
 def csFirstUniqueChar(input_str):
+    '''
+    '''
 
-    if len(set(input_str)) == 1 or len(input_str) == 0:
+    none = int(-1)
 
-        return -1
+    if len(input_str) == 0:
 
-    char_dict = dict()
-
-    for i in range(len(input_str)):
-
-        if input_str[i] not in char_dict:
-
-            char_dict[input_str[i]] = 0
-
-        char_dict[input_str[i]] += 1
-
-    for c in range(len(input_str)):
-
-        if char_dict[input_str[c]] == 1:
-
-            return c
+        return none
 
     else:
 
-        return -1
+        chars = list(input_str)
+        # nums = range(len(input_str))
+        nums = range(len(input_str) + 1)
+        # char_dict = dict(zip(chars, nums))
+
+        for a, b in zip(chars, nums):
+
+            print(a, b)
+
+        # print(chars, "<- CHARS")
+        # # print(nums, "<- NUMS")
+        # # print(char_dict, "<- THIS IS THE CHAR_DICT")
+        # min_n = min(char_dict.values())
+
+        # if min_n == (len(input_str)-1):
+
+        #     return none
+
+        # else:
+
+        #     return min_n
+
+
+# print(csFirstUniqueChar("abc"))  # a - 0
+print(csFirstUniqueChar("aaaaabc"))  # b - 5
+print(csFirstUniqueChar("aaa"))  # -1
+print(csFirstUniqueChar("aabbc"))  # c - 4
 
 
 # def csFindAddedLetter(str_1, str_2):
