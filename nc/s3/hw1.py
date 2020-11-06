@@ -70,53 +70,93 @@ def height(n):
     return max(level_set)
 
 
+# def minimumDepthBinaryTree(root):
+
+#     if root is None:
+
+#         return 0
+
+#     paths = list()
+
+#     s = [[root]]
+
+#     while len(s) > 0:
+
+#         p = s.pop()
+
+#         node = p[-1]
+
+#         if node != root:
+
+#             if len(paths) > 0:
+
+#                 replaced = False
+
+#                 for i in range(len(paths)):
+
+#                     nodes_in_p = {n.value for n in p}
+
+#                     if paths[i][-1] in nodes_in_p:
+
+#                         paths[i] = [node.value for node in p]
+#                         replaced = True
+
+#                 if not replaced:
+
+#                     paths.append([node.value for node in p])
+
+#             else:
+
+#                 paths.append([node.value for node in p])
+
+#         if node.left is not None:
+
+#             p_copy = list(p) + [node.left]
+#             s.append(p_copy)
+
+#         if node.right is not None:
+
+#             p_copy = list(p) + [node.right]
+#             s.append(p_copy)
+
+#     return min([len(p) for p in paths]) if len(paths) > 0 else 1
+
+
 def minimumDepthBinaryTree(root):
 
     if root is None:
 
         return 0
 
-    paths = list()
+    if root.left is None and root.right is None:
 
-    s = [[root]]
+        return 1
 
-    while len(s) > 0:
+    if root.left is not None and root.right is None:
 
-        p = s.pop()
+        return minimumDepthBinaryTree(root.left) + 1
 
-        node = p[-1]
+    if root.right is not None and root.left is None:
 
-        if node != root:
+        return minimumDepthBinaryTree(root.right) + 1
 
-            if len(paths) > 0:
+    return min(minimumDepthBinaryTree(root.left), minimumDepthBinaryTree(root.right)) + 1
 
-                replaced = False
 
-                for i in range(len(paths)):
+class BST:
 
-                    nodes_in_p = {n.value for n in p}
+    def __init__(self, value):
 
-                    if paths[i][-1] in nodes_in_p:
+        self.value = value
+        self.left = None
+        self.right = None
 
-                        paths[i] = [node.value for node in p]
-                        replaced = True
 
-                if not replaced:
+a = BST(5)
+a.left = BST(7)
+a.right = BST(22)
+a.right.left = BST(17)
+a.right.right = BST(9)
 
-                    paths.append([node.value for node in p])
 
-            else:
-
-                paths.append([node.value for node in p])
-
-        if node.left is not None:
-
-            p_copy = list(p) + [node.left]
-            s.append(p_copy)
-
-        if node.right is not None:
-
-            p_copy = list(p) + [node.right]
-            s.append(p_copy)
-
-    return min([len(p) for p in paths]) if len(paths) > 0 else 1
+print(minimumDepthBinaryTree(a))

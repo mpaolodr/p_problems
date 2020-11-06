@@ -16,7 +16,7 @@ def csFindAllPathsFromAToB(graph):
         for nbr in graph[v][::-1]:
 
             new_p = list(p) + [nbr]
-            print(new_p)
+
             s.append(new_p)
 
     return paths
