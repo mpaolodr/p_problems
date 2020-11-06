@@ -154,3 +154,28 @@ def csBinaryToASCII(binary):
         result += chr(int(num, base=2))
 
     return result
+
+
+def csRaindrops(number):
+
+    result = ""
+
+    if number % 3 == 0:
+
+        result += "Pling"
+
+    if number % 5 == 0:
+
+        result += "Plang"
+
+    if number % 7 == 0:
+
+        result += "Plong"
+
+    if result == "":
+
+        return str(number)
+
+    else:
+
+        return result
