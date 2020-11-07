@@ -122,38 +122,57 @@ def goodSubstrings(strToSplit, k):
 
 def csBinaryToASCII(binary):
 
-    if len(binary) == 0:
-
-        return ""
-
-    lst_bin = list()
-
-    i = 1
-
-    new_str = binary[0]
-
-    while i < len(binary):
-
-        if i % 8 != 0:
-
-            new_str += binary[i]
-
-        elif i % 8 == 0:
-
-            lst_bin.append(new_str)
-            new_str = binary[i]
-
-        i += 1
-
-    lst_bin.append(new_str)
+    i = 0
+    j = 8
 
     result = ""
+    while i < len(binary):
 
-    for num in lst_bin:
+        result += chr(int(binary[i:j], base=2))
 
-        result += chr(int(num, base=2))
+        i = j
+        j += 8
 
     return result
+
+
+print(csBinaryToASCII("0100100001100101011011000110110001101111"))
+
+
+# def csBinaryToASCII(binary):
+
+#     if len(binary) == 0:
+
+#         return ""
+
+#     lst_bin = list()
+
+#     i = 1
+
+#     new_str = binary[0]
+
+#     while i < len(binary):
+
+#         if i % 8 != 0:
+
+#             new_str += binary[i]
+
+#         elif i % 8 == 0:
+
+#             lst_bin.append(new_str)
+#             new_str = binary[i]
+
+#         i += 1
+
+#     lst_bin.append(new_str)
+
+#     result = ""
+
+#     for num in lst_bin:
+
+#         result += chr(int(num, base=2))
+
+#     return result
 
 
 def csRaindrops(number):
