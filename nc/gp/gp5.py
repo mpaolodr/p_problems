@@ -73,7 +73,6 @@ def plus_one(d):
 
     return d
 
-
     # return digits
 print(plus_one([1, 3, 2]))  # 133
 print(plus_one([3, 2, 1, 9]))  # 3220
@@ -81,3 +80,47 @@ print(plus_one([9, 9, 9]))  # 1000
 print(plus_one([1, 9, 0]))  # 191
 print(plus_one([1, 9, 9, 9]))  # 2000
 print(plus_one([1, 1, 9, 9]))  # 1200
+
+
+"""
+Given an array of integers `nums`, define a function that returns the "pivot" index of the array.
+
+The "pivot" index is where the sum of all the numbers on the left of that index is equal to the sum of all the numbers on the right of that index.
+
+If the input array does not have a "pivot" index, then the function should return `-1`. If there are more than one "pivot" indexes, then you should return the left-most "pivot" index.
+
+Example 1:
+
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation:
+The sum of the numbers to the left of index 3 (1 + 7 + 3 = 11) is equal to the sum of numbers to the right of index 3 (5 + 6 = 11).
+Also, 3 is the first index where this occurs.
+
+Example 2:
+
+Input: nums = [1,2,3]
+Output: -1
+Explanation:
+There is no index that satisfies the conditions in the problem statement.
+"""
+
+
+def pivot_index(nums):
+    # Your code here
+
+    for i in range(len(nums)):
+
+        first_half = nums[:i]
+        second_half = nums[i + 1:]
+
+        if sum(first_half) == sum(second_half):
+
+            return i
+
+    return -1
+
+
+print(pivot_index([1, 7, 3, 6, 5, 6]))
+print(pivot_index([1, 2, 3]))
+print(pivot_index([1, 2, 3, 4, 6, 4, 3, 2, 1]))
