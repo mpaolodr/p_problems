@@ -92,3 +92,47 @@ def csAverageOfTopFive(scores):
 #         i += 1
 
 #     return result
+
+
+def csMaxNumberOfLambdas(text):
+
+    lambda_dict = {
+        "l": 1,
+        "a": 2,
+        "m": 1,
+        "b": 1,
+        "d": 1
+    }
+
+    char_count = dict()
+
+    for c in text:
+
+        if c not in char_count:
+
+            char_count[c] = 0
+
+        char_count[c] += 1
+
+    word_count = 0
+
+    valid = True
+
+    while valid:
+
+        for k in lambda_dict:
+
+            if k not in char_count:
+
+                return 0
+
+            if char_count[k] != 0 and lambda_dict[k] <= char_count[k]:
+
+                char_count[k] -= lambda_dict[k]
+
+            else:
+
+                valid = False
+                return word_count
+
+        word_count += 1
