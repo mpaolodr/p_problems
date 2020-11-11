@@ -49,3 +49,46 @@ def csAverageOfTopFive(scores):
     sorted_average = [average_dict[key] for key in sorted(average_dict)]
 
     return sorted_average
+
+
+# no hash table
+# def csAverageOfTopFive(scores):
+
+#     num_students = len(set([pair[0] for pair in scores]))
+#     result = list()
+
+#     i = 1
+
+#     while i < num_students + 1:
+
+#         final_list = []
+#         scores_arr = []
+#         average_score = []
+
+#         for j in range(len(scores)):
+
+#             student = scores[j][0]
+#             score = scores[j][1]
+
+#             if student == i:
+#                 scores_arr.append(score)
+
+#         scores_arr.sort(reverse=True)
+
+#         if len(scores_arr) >= 5:
+
+#             sum_it = sum(scores_arr[0:5]) // 5
+
+#         else:
+
+#             sum_it = sum(scores_arr) // len(scores_arr)
+
+#         average_score.append(sum_it)
+
+#         final_list = [i] + average_score
+
+#         result.append(final_list)
+
+#         i += 1
+
+#     return result
