@@ -20,7 +20,7 @@ containsTypo(4) -> True
 
 
 are we missing containsTypo?
-are we supposed to find the first draft with typo or return a boolean??
+are we supposed to find the first draft with typo or return a boolean???
 """
 
 
