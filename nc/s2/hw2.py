@@ -13,44 +13,50 @@ ll.next = ListNode(2)
 ll.next.next = ListNode(3)
 ll.next.next.next = ListNode(4)
 ll.next.next.next.next = ListNode(5)
+ll.next.next.next.next.next = ListNode(6)
+ll.next.next.next.next.next.next = ListNode(7)
+ll.next.next.next.next.next.next.next = ListNode(8)
+ll.next.next.next.next.next.next.next.next = ListNode(9)
+ll.next.next.next.next.next.next.next.next.next = ListNode(10)
+ll.next.next.next.next.next.next.next.next.next.next = ListNode(11)
 
 
-# def reverseNodesInKGroups(l, k):
+def reverseNodesInKGroups(l, k):
 
-#     # study. I don't get this
-#     # check if length is less than k
+    # study. I don't get this
+    # check if length is less than k
 
-#     cur = l
+    cur = l
 
-#     for _ in range(k):
+    for _ in range(k):
 
-#         if cur is None:
+        if cur is None:
 
-#             return l
+            return l
 
-#         cur = cur.next
+        cur = cur.next
 
-#     prev, cur = l, l.next
+    prev, cur = l, l.next
 
-#     for node in range(k - 1):
+    for node in range(k - 1):
 
-#         cur.next, cur, prev = prev, cur.next, cur
+        cur.next, cur, prev = prev, cur.next, cur
 
-#     l.next = reverseNodesInKGroups(cur, k)
+    l.next = reverseNodesInKGroups(cur, k)
 
-#     return prev
+    return prev
 
 
-# # reverseNodesInKGroups(ll, 3)
-# new_ll = reverseNodesInKGroups(ll, 3)
+# reverseNodesInKGroups(ll, 3)
+new_ll = reverseNodesInKGroups(ll, 3)
 
-# cur = new_ll
+cur = new_ll
 
-# while cur is not None:
+while cur is not None:
 
-#     print(cur.value)
+    print(cur.value)
 
-#     cur = cur.next
+    cur = cur.next
 
 # # O(n ^ 2)
 # def reverseNodesInKGroups(l, k):
@@ -165,49 +171,49 @@ ll.next.next.next.next = ListNode(5)
 #     return length
 
 
-def reverseInK(l, k):
+# def reverseInK(l, k):
 
-    cur = l
-    counter = 1
+#     cur = l
+#     counter = 1
 
-    while cur is not None and counter < k:
+#     while cur is not None and counter < k:
 
-        counter += 1
-        cur = cur.next
+#         counter += 1
+#         cur = cur.next
 
-    if cur is None:
+#     if cur is None:
 
-        return l
+#         return l
 
-    new_next = cur.next
+#     new_next = cur.next
 
-    head, tail = reverser(l, cur)
+#     head, tail = reverser(l, cur)
 
-    tail.next = reverseInK(new_next, k)
+#     tail.next = reverseInK(new_next, k)
 
-    return head
+#     return head
 
 
-def reverser(head, target):
+# def reverser(head, target):
 
-    cur = head
-    prev = None
+#     cur = head
+#     prev = None
 
-    while cur != target:
+#     while cur != target:
 
-        next_node = cur.next
+#         next_node = cur.next
 
-        cur.next = prev
+#         cur.next = prev
 
-        prev = cur
-        cur = next_node
+#         prev = cur
+#         cur = next_node
 
-    cur.next = prev
+#     cur.next = prev
 
-    tail = head
-    head = cur
+#     tail = head
+#     head = cur
 
-    return head, tail
+#     return head, tail
 
 # # Singly-linked lists are already defined with this interface:
 # # class ListNode(object):
