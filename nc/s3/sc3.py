@@ -15,7 +15,6 @@ class Tree(object):
 
 
 def csBSTRangeSum(root, lower, upper, total=0):
-    # print(total)
 
     # if lower <= root.value <= upper:
 
@@ -72,3 +71,50 @@ a.right.right = Tree(18)
 
 print(csBSTRangeSum(b, 7, 15))
 print(csBSTRangeSum(a, 6, 10))
+
+
+def csBinaryTreeInvert(root):
+
+    if root.left is not None and root.right is not None:
+
+        root.left, root.right = root.right, root.left
+
+        csBinaryTreeInvert(root.left)
+        csBinaryTreeInvert(root.right)
+
+    if root.left is None and root.right is not None:
+
+        root.left = root.right
+
+        csBinaryTreeInvert(root.left)
+
+    if root.right is None and root.left is not None:
+
+        root.right = root.left
+
+        csBinaryTreeInvert(root.right)
+
+    return root
+
+
+def csFindAllPathsFromAToB(graph):
+
+    s = [[0]]
+
+    paths = list()
+
+    while len(s) > 0:
+
+        path = s.pop()
+        node = path[-1]
+
+        if node == len(graph) - 1:
+
+            paths.append(path)
+
+        for nbr in graph[node][::-1]:
+
+            new_p = path[::] + [nbr]
+            s.append(new_p)
+
+    return paths

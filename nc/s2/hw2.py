@@ -21,30 +21,30 @@ ll.next.next.next.next.next.next.next.next.next = ListNode(10)
 ll.next.next.next.next.next.next.next.next.next.next = ListNode(11)
 
 
-def reverseNodesInKGroups(l, k):
+# def reverseNodesInKGroups(l, k):
 
-    # study. I don't get this
-    # check if length is less than k
+#     # study. I don't get this
+#     # check if length is less than k
 
-    cur = l
+#     cur = l
 
-    for _ in range(k):
+#     for _ in range(k):
 
-        if cur is None:
+#         if cur is None:
 
-            return l
+#             return l
 
-        cur = cur.next
+#         cur = cur.next
 
-    prev, cur = l, l.next
+#     prev, cur = l, l.next
 
-    for node in range(k - 1):
+#     for node in range(k - 1):
 
-        cur.next, cur, prev = prev, cur.next, cur
+#         cur.next, cur, prev = prev, cur.next, cur
 
-    l.next = reverseNodesInKGroups(cur, k)
+#     l.next = reverseNodesInKGroups(cur, k)
 
-    return prev
+#     return prev
 
 
 # reverseNodesInKGroups(ll, 3)
