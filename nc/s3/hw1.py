@@ -122,25 +122,63 @@ def height(n):
 #     return min([len(p) for p in paths]) if len(paths) > 0 else 1
 
 
+# def minimumDepthBinaryTree(root):
+
+#     if root is None:
+
+#         return 0
+
+#     if root.left is None and root.right is None:
+
+#         return 1
+
+#     if root.left is not None and root.right is None:
+
+#         return minimumDepthBinaryTree(root.left) + 1
+
+#     if root.right is not None and root.left is None:
+
+#         return minimumDepthBinaryTree(root.right) + 1
+
+#     return min(minimumDepthBinaryTree(root.left), minimumDepthBinaryTree(root.right)) + 1
+
 def minimumDepthBinaryTree(root):
 
-    if root is None:
+    s = [[root]]
+    paths = list()
 
-        return 0
+    while len(s):
 
-    if root.left is None and root.right is None:
+        path = s.pop()
+        node = path[-1]
 
-        return 1
+        if node.right is None and node.left is None:
 
-    if root.left is not None and root.right is None:
+            paths.append(path)
 
-        return minimumDepthBinaryTree(root.left) + 1
+        if node.right is not None:
 
-    if root.right is not None and root.left is None:
+            new_p = list(path) + [node.right]
+            s.append(new_p)
 
-        return minimumDepthBinaryTree(root.right) + 1
+        if node.left is not None:
 
-    return min(minimumDepthBinaryTree(root.left), minimumDepthBinaryTree(root.right)) + 1
+            new_p = list(path) + [node.left]
+            s.append(new_p)
+
+    min_depth = None
+
+    for path in paths:
+
+        if min_depth is None:
+
+            min_depth = len(path)
+
+        if min_depth > len(path):
+
+            min_depth = len(path)
+
+    return min_depth
 
 
 class BST:
@@ -158,5 +196,23 @@ a.right = BST(22)
 a.right.left = BST(17)
 a.right.right = BST(9)
 
+a1 = BST(5)
+b1 = BST(7)
+c1 = BST(22)
+d1 = BST(17)
+e1 = BST(15)
+f1 = BST(1)
+g1 = BST(9)
 
+a1.right = c1
+a1.left = b1
+
+c1.left = d1
+c1.right = g1
+
+d1.left = e1
+
+e1.right = f1
+
+print(minimumDepthBinaryTree(a1))
 print(minimumDepthBinaryTree(a))
