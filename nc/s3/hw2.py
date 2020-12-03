@@ -26,3 +26,24 @@ def traverseTree(t):
             q.append((height + 1, node.right))
 
     return nodes
+
+
+def binaryTreeInOrderTraversal(root, inorder=None):
+
+    if inorder is None:
+
+        inorder = list()
+
+    if root is not None:
+
+        if root.left is not None:
+
+            binaryTreeInOrderTraversal(root.left, inorder)
+
+        inorder.append(root.value)
+
+        if root.right is not None:
+
+            binaryTreeInOrderTraversal(root.right, inorder)
+
+        return inorder
