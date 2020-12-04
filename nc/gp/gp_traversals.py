@@ -21,3 +21,31 @@ def inorder_traversal_r(root):
     result = []
     helper(root, result)
     return result
+
+
+def inorder_traversal_i(root):
+    # hold the result
+    result = []
+    # make a stack
+    stack = []
+
+    # iterate
+    while True:
+        # while the root node is not none
+        while root:
+            # append the root to the stack
+            stack.append(root)
+            # traverse to the left of the root
+            root = root.left
+
+            # if there is no stack
+            if not stack:
+                # return the result
+                return result
+
+            # pop the stack on to a node variable
+            node = stack.pop()
+            # append the nodes value to the result list
+            result.append(node.val)
+            # traverse to the tight of the node
+            root = node.right
