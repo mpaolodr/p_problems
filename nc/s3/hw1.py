@@ -122,25 +122,26 @@ def height(n):
 #     return min([len(p) for p in paths]) if len(paths) > 0 else 1
 
 
-# def minimumDepthBinaryTree(root):
+def minimumDepthBinaryTree(root):
 
-#     if root is None:
+    if root is None:
 
-#         return 0
+        return 0
 
-#     if root.left is None and root.right is None:
+    if root.left is None and root.right is None:
 
-#         return 1
+        return 1
 
-#     if root.left is not None and root.right is None:
+    if root.left is not None and root.right is None:
 
-#         return minimumDepthBinaryTree(root.left) + 1
+        return minimumDepthBinaryTree(root.left) + 1
 
-#     if root.right is not None and root.left is None:
+    if root.right is not None and root.left is None:
 
-#         return minimumDepthBinaryTree(root.right) + 1
+        return minimumDepthBinaryTree(root.right) + 1
 
-#     return min(minimumDepthBinaryTree(root.left), minimumDepthBinaryTree(root.right)) + 1
+    return min(minimumDepthBinaryTree(root.left), minimumDepthBinaryTree(root.right)) + 1
+
 
 def minimumDepthBinaryTree(root):
 
@@ -179,6 +180,45 @@ def minimumDepthBinaryTree(root):
             min_depth = len(path)
 
     return min_depth
+
+
+# test
+def balancedBinaryTree(root):
+    if root == None:
+        return True
+
+    flatList = list()
+
+    def maxDepth(self, counter):
+        # nothing return 0
+        if self is None:
+            flatList.append(counter)
+            return
+
+        if self.left is None and self.right is None:
+            flatList.append(counter + 1)
+            return
+
+        if self.left is None:
+            flatList.append(counter + 1)
+            return
+
+        if self.right is None:
+            flatList.append(counter + 1)
+            return
+
+        maxDepth(self.left, counter + 1)
+        maxDepth(self.right, counter + 1)
+
+    maxDepth(root, 1)
+
+    minDepth = min(flatList)
+    maxDepth = max(flatList)
+
+    if maxDepth > minDepth + 1:
+        return False
+    else:
+        return True
 
 
 class BST:
