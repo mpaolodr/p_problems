@@ -181,41 +181,198 @@ def minimumDepthBinaryTree(root):
 
     return min_depth
 
+# everything below should work
+# def balancedBinaryTree(root):
+#     if root is None:
+#         return True
 
-# test
+#     flatList = list()
+
+#     def maxDepth(self, counter):
+
+
+#         # nothing return 0
+#         if self is None:
+#             flatList.append(counter)
+#             return
+
+#         if self.left is None and self.right is None:
+#             flatList.append(counter)
+#             return
+
+#         if self.left is None and self.right is not None:
+#             flatList.append(counter + 1)
+#             return
+
+#         if self.right is None and self.left is not None:
+#             flatList.append(counter + 1)
+#             return
+
+#         maxDepth(self.left, counter + 1)
+#         maxDepth(self.right, counter + 1)
+
+
+#     s = [root]
+
+
+#     while len(s):
+
+#         flatList = list()
+#         node = s.pop()
+
+#         l_height = 0
+#         r_height = 0
+
+#         if node.left is not None:
+
+#             maxDepth(node.left, 1)
+#             l_height = max(flatList)
+
+#             s.append(node.left)
+
+#         flatList = list()
+
+#         if node.right is not None:
+#             maxDepth(node.right, 1)
+#             r_height = max(flatList)
+
+#             s.append(node.right)
+
+
+#         if max(r_height, l_height) - min(r_height, l_height) > 1:
+
+#             return False
+
+
+#     return True
+
+
+# def balancedBinaryTree(root):
+
+#     if root == None:
+#         return True
+
+#     def maxDepth(self, counter):
+#         # node is None so we return 0
+#         if self is None:
+#             return (0, )
+#         # left and right is None, we return counter which starts at 1
+#         if self.left is None and self.right is  None:
+#             return (counter,)
+#         # if one of the legs is dead loop the other back in
+#         # added self.right is not None
+#         if self.left is None:
+
+#             return(maxDepth(self.right, counter + 1),)
+
+#         # added self.left is not None
+#         if self.right is None:
+
+#             return(maxDepth(self.left, counter + 1),)
+
+#         # if neither leg is dead loop both back in
+#         return(maxDepth(self.left, counter + 1), maxDepth(self.right, counter + 1))
+
+#     # nothing changed here
+#     def flatten2list(object):
+#         gather = []
+#         for item in object:
+#             if isinstance(item, (list, tuple, set)):
+#                 gather.extend(flatten2list(item))
+#             else:
+#                 gather.append(item)
+#         return gather
+
+
+#     # traverse the tree and check the left and right height of each node
+#     s = [root]
+
+#     while len(s):
+
+#         node = s.pop()
+
+#         l = 0
+#         r = 0
+
+#         if node.left is not None:
+
+#             l = max(flatten2list(maxDepth(node.left, 1)))
+#             s.append(node.left)
+
+#         if node.right is not None:
+
+#             r = max(flatten2list(maxDepth(node.right, 1)))
+#             s.append(node.right)
+
+
+#         if max(l, r) - min(l, r) > 1:
+
+#             return False
+
+
+#     return True
+
+
 def balancedBinaryTree(root):
+
+    fail_counter = 0
+
     if root == None:
         return True
 
-    flatList = list()
+    elif root.left is None and root.right is None:
+        return True
 
-    def maxDepth(self, counter):
+    def maxDepth(self):
         # nothing return 0
         if self is None:
-            flatList.append(counter)
-            return
+            return 0
 
         if self.left is None and self.right is None:
-            flatList.append(counter + 1)
-            return
+            return 1
 
         if self.left is None:
-            flatList.append(counter + 1)
-            return
+
+            return maxDepth(self.right) + 1
 
         if self.right is None:
-            flatList.append(counter + 1)
-            return
 
-        maxDepth(self.left, counter + 1)
-        maxDepth(self.right, counter + 1)
+            return maxDepth(self.left) + 1
 
-    maxDepth(root, 1)
+        return max(maxDepth(self.left), maxDepth(self.right)) + 1
 
-    minDepth = min(flatList)
-    maxDepth = max(flatList)
+    def inorder_traversal(root):
 
-    if maxDepth > minDepth + 1:
+        if not root:
+            return 0
+
+        left = inorder_traversal(root.left)
+        right = inorder_traversal(root.right)
+
+        if root.left:
+
+            left_num = maxDepth(root.left)
+
+        else:
+
+            left_num = 0
+
+        if root.right:
+
+            right_num = maxDepth(root.right)
+
+        else:
+            right_num = 0
+
+        if max(right_num, left_num) - min(right_num, left_num) > 1:
+
+            nonlocal fail_counter
+            fail_counter += 1
+
+    inorder_traversal(root)
+
+    # print (fail_counter, "FAILS")
+    if fail_counter > 0:
         return False
     else:
         return True
