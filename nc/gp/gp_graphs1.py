@@ -35,17 +35,47 @@ def color_graph(graph, colors):
     return graph
 
 
-g = {}
+graph = {}
+
+a = GraphNode("A")
+b = GraphNode("B")
+c = GraphNode("C")
+d = GraphNode("D")
+e = GraphNode("E")
+f = GraphNode("F")
+g = GraphNode("G")
+
+a.neighbors.add(b)
+a.neighbors.add(c)
+a.neighbors.add(d)
+a.neighbors.add(e)
+
+b.neighbors.add(d)
+b.neighbors.add(e)
+b.neighbors.add(c)
+
+c.neighbors.add(f)
+c.neighbors.add(g)
+c.neighbors.add(b)
+
+f.neighbors.add(a)
+g.neighbors.add(b)
+g.neighbors.add(c)
+g.neighbors.add(d)
+
 
 nodes = [
-    GraphNode("A"), GraphNode("B"), GraphNode(
-        "C"), GraphNode("D"), GraphNode("E")
+    a, b, c, d, e, f, g
 ]
 
 colors = ["black", "white", "red", "yellow", "blue"]
 
 for n in nodes:
 
-    g[n.label] = n
+    graph[n] = n
 
-print(g)
+color_graph(graph, colors)
+
+for n in nodes:
+
+    print(n.color)
