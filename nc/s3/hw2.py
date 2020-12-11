@@ -96,3 +96,29 @@ def treePaths(t):
         result.append(to_str)
 
     return result[::-1]
+
+# recursive
+# def treePaths(t, path=None, paths=None):
+
+    # if t is None:
+
+    #     return list()
+
+    # if path is None and paths is None:
+
+    #     path = [str(t.value)]
+    #     paths = list()
+
+    # if t.left is None and t.right is None:
+
+    #     paths.append(path)
+
+    # if t.right is not None:
+    #     new_p = path.copy() + [str(t.right.value)]
+    #     treePaths(t.right, new_p, paths)
+
+    # if t.left is not None:
+    #     new_p = path.copy() + [str(t.left.value)]
+    #     treePaths(t.left, new_p, paths)
+
+    # return ["->".join(p) for p in paths][::-1]
