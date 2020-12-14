@@ -5,25 +5,55 @@ class Solution(object):
         :rtype: int
         """
 
-        digits = reversed(list(str(x)))
-        reversed_list = []
+        rev = 0
 
-        for char in digits:
+        while x != 0:
 
-            if char.isdigit():
+            pop = x % 10
+            x //= 10
 
-                reversed_list.append(char)
+            if rev > (2**31 - 1 // 10) or (rev == 2**31 - 1 // 10 and pop > 7):
 
-            else:
+                return 0
 
-                reversed_list.insert(0, char)
+            if rev < (-2**31 // 10) or (rev == -2**31 // 10 and pop <= -8):
 
-        reversed_digits = int("".join(reversed_list))
+                return 0
 
-        if reversed_digits >= (-2 ** 31) and reversed_digits <= ((2 ** 31) - 1):
+            rev = rev * 10 + pop
 
-            return reversed_digits
+        return rev
 
-        else:
 
-            return 0
+x = Solution()
+
+print(x.reverse(-122))
+
+# def reverse(self, x):
+#     """
+#     :type x: int
+#     :rtype: int
+#     """
+
+#     digits = reversed(list(str(x)))
+#     reversed_list = []
+
+#     for char in digits:
+
+#         if char.isdigit():
+
+#             reversed_list.append(char)
+
+#         else:
+
+#             reversed_list.insert(0, char)
+
+#     reversed_digits = int("".join(reversed_list))
+
+#     if reversed_digits >= (-2 ** 31) and reversed_digits <= ((2 ** 31) - 1):
+
+#         return reversed_digits
+
+#     else:
+
+#         return 0
