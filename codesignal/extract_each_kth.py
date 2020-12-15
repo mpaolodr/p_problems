@@ -28,6 +28,11 @@ def extractEachKth(inputArray, k):
 
     # return inputArray
 
-    del inputArray[k - 1::k]
+    # different solution
 
-    return inputArray
+    # del inputArray[k - 1::k]
+
+    # return inputArray
+
+    # list comprehension
+    return [i for (n, index) in range(len(inputArray)) if (index + 1) % k == 0]
