@@ -11,6 +11,7 @@ def arrayMaxConsecutiveSum(inputArray, k):
     cur_total = sum(inputArray[:k])
     max_total = cur_total
 
+    # subtracting the current index and the new index to be included is key
     for i in range(len(inputArray) - k):
 
         cur_total = cur_total - inputArray[i] + inputArray[i + k]
