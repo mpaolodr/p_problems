@@ -131,3 +131,44 @@ sorted_nums = sorted(nums)
 
 fails due to duplicates
 """
+
+
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+
+        # 3sum probs can be solved with two pointer approach
+
+        diff = 2**31 - 1
+
+        sorted_nums = sorted(nums)
+
+        i = 0
+
+        while i < len(sorted_nums):
+
+            if diff == 0:
+
+                break
+
+            lo = i + 1
+            hi = len(sorted_nums) - 1
+
+            while lo < hi:
+
+                sum_values = sorted_nums[i] + sorted_nums[lo] + sorted_nums[hi]
+
+                if abs(target - sum_values) < diff:
+
+                    diff = target - sum_values
+
+                if sum_values < target:
+
+                    lo += 1
+
+                else:
+
+                    hi -= 1
+
+            i += 1
+
+        return target - diff
