@@ -30,3 +30,40 @@ def csIsomorphicStrings(a, b):
             return False
 
     return True
+
+
+def csWordPattern(pattern, a):
+
+    split_words = a.split()
+
+    if len(pattern) != len(split_words):
+
+        return False
+
+    mapper = dict()
+    seen = set()
+
+    for char, word in zip(pattern, split_words):
+
+        if char not in mapper:
+
+            mapper[char] = ""
+
+        if mapper[char] == "" and word not in seen:
+
+            seen.add(word)
+            mapper[char] = word
+
+    i = 0
+    j = 0
+
+    while i < len(pattern):
+
+        if mapper[pattern[i]] != split_words[j]:
+
+            return False
+
+        i += 1
+        j += 1
+
+    return True
