@@ -67,3 +67,71 @@ def csWordPattern(pattern, a):
         j += 1
 
     return True
+
+
+def csGroupAnagrams(strs):
+
+    seen = set()
+
+    results = list()
+
+    for i in range(len(strs)):
+
+        if strs[i] not in seen:
+
+            res = [strs[i]] + get_nbrs(strs[i], strs[:i] + strs[i + 1:])
+
+            for word in res:
+
+                seen.add(word)
+
+            results.append(res)
+
+    return results
+
+
+def get_nbrs(word, lst):
+
+    checker = dict()
+    nbrs = list()
+
+    for c in word:
+
+        if c not in checker:
+
+            checker[c] = 0
+
+        checker[c] += 1
+
+    for word in lst:
+
+        count = count_dict(word)
+        valid_nbr = True
+
+        for k in count:
+
+            if k not in checker or checker[k] != count[k]:
+
+                valid_nbr = False
+                break
+
+        if valid_nbr:
+
+            nbrs.append(word)
+
+    return nbrs
+
+
+def count_dict(word):
+
+    count = dict()
+
+    for c in word:
+
+        if c not in count:
+
+            count[c] = 0
+
+        count[c] += 1
+
+    return count
