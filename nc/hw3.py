@@ -11,6 +11,11 @@ def csReverseIntegerBits(n):
     return int(f"0b{to_bin[:-2]}", 2)
 
 
+def csReverseIntegerBits(n):
+
+    return int(bin(n)[2:][::-1], base=2)
+
+
 """
 Given an array of positive integers a, your task is to calculate how many of its elements have an even number of digits.
 
