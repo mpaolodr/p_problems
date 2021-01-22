@@ -144,6 +144,19 @@ def csBinaryToASCII(binary):
 print(csBinaryToASCII("0100100001100101011011000110110001101111"))
 
 
+def csBinaryToASCII(binary):
+
+    result = ""
+
+    for bin_code in range(8, len(binary) + 1, 8):
+
+        binary_to_ascii = int(binary[bin_code - 8:bin_code], base=2)
+
+        result += chr(binary_to_ascii)
+
+    return result
+
+
 # def csBinaryToASCII(binary):
 
 #     if len(binary) == 0:
