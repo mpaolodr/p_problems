@@ -48,7 +48,7 @@ ll.next.next.next.next.next.next.next.next.next.next = ListNode(11)
 
 
 # reverseNodesInKGroups(ll, 3)
-new_ll = reverseNodesInKGroups(ll, 3)
+# new_ll = reverseNodesInKGroups(ll, 3)
 
 cur = new_ll
 
@@ -223,77 +223,77 @@ while cur is not None:
 # #
 # def mergeTwoLinkedLists(l1, l2):
 
-#     if l1 is None and l2 is not None:
+    # if l1 is None and l2 is not None:
 
-#         return l2
+    #     return l2
 
-#     if l2 is None and l1 is not None:
+    # if l2 is None and l1 is not None:
 
-#         return l1
+    #     return l1
 
-#     pointer_1 = l1
-#     pointer_2 = l2
+    # pointer_1 = l1
+    # pointer_2 = l2
 
-#     new_ll = None
-#     pointer_3 = None
+    # new_ll = None
+    # pointer_3 = None
 
-#     while pointer_1 is not None and pointer_2 is not None:
+    # while pointer_1 is not None and pointer_2 is not None:
 
-#         if new_ll is None:
+    #     if new_ll is None:
 
-#             if pointer_1.value < pointer_2.value:
+    #         if pointer_1.value < pointer_2.value:
 
-#                 new_ll = ListNode(pointer_1.value)
-#                 pointer_1 = pointer_1.next
+    #             new_ll = ListNode(pointer_1.value)
+    #             pointer_1 = pointer_1.next
 
-#                 pointer_3 = new_ll
+    #             pointer_3 = new_ll
 
-#             else:
+    #         else:
 
-#                 new_ll = ListNode(pointer_2.value)
-#                 pointer_2 = pointer_2.next
+    #             new_ll = ListNode(pointer_2.value)
+    #             pointer_2 = pointer_2.next
 
-#                 pointer_3 = new_ll
+    #             pointer_3 = new_ll
 
-#         else:
+    #     else:
 
-#             if pointer_1.value < pointer_2.value:
+    #         if pointer_1.value < pointer_2.value:
 
-#                 new_node = ListNode(pointer_1.value)
+    #             new_node = ListNode(pointer_1.value)
 
-#                 pointer_3.next = new_node
-#                 pointer_3 = pointer_3.next
+    #             pointer_3.next = new_node
+    #             pointer_3 = pointer_3.next
 
-#                 pointer_1 = pointer_1.next
+    #             pointer_1 = pointer_1.next
 
-#             else:
+    #         else:
 
-#                 new_node = ListNode(pointer_2.value)
+    #             new_node = ListNode(pointer_2.value)
 
-#                 pointer_3.next = new_node
-#                 pointer_3 = pointer_3.next
+    #             pointer_3.next = new_node
+    #             pointer_3 = pointer_3.next
 
-#                 pointer_2 = pointer_2.next
+    #             pointer_2 = pointer_2.next
 
-#     while pointer_1 is not None:
+    # while pointer_1 is not None:
 
-#         new_node = ListNode(pointer_1.value)
+    #     new_node = ListNode(pointer_1.value)
 
-#         pointer_3.next = new_node
-#         pointer_3 = pointer_3.next
+    #     pointer_3.next = new_node
+    #     pointer_3 = pointer_3.next
 
-#         pointer_1 = pointer_1.next
+    #     pointer_1 = pointer_1.next
 
-#     while pointer_2 is not None:
+    # while pointer_2 is not None:
 
-#         new_node = ListNode(pointer_2.value)
+    #     new_node = ListNode(pointer_2.value)
 
-#         pointer_3.next = new_node
-#         pointer_3 = pointer_3.next
+    #     pointer_3.next = new_node
+    #     pointer_3 = pointer_3.next
 
-#         pointer_2 = pointer_2.next
+    #     pointer_2 = pointer_2.next
 
-#     return new_ll
+    # return new_ll
 
 
 # # Singly-linked lists are already defined with this interface:
