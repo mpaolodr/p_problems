@@ -56,9 +56,17 @@ export function getMonthDays(month = THIS_MONTH, year = THIS_YEAR) {
   }
 }
 
-export function getMonthFirstDay(month = THIS_MONTH, year = THIS_YEAR) {
-  return +new Date(`${year} - ${zeroPad(month, 2)} - 01`).getDay() + 1;
-}
+// export function getMonthFirstDay(month = THIS_MONTH, year = THIS_YEAR) {
+//   return +new Date(`${year}-${zeroPad(month, 2)}-01`).getDay() + 1;
+// }
+
+export const getMonthFirstDay = (month = THIS_MONTH, year = THIS_YEAR) => {
+  console.log(month, year, 'FROM GET MONTH FIRST DAY');
+  const test = +new Date(`${year}-${zeroPad(month, 2)}-01`).getDay() + 1;
+
+  console.log('FROM GET MONTH FIRST DAY:', test);
+  return +new Date(`${year}-${zeroPad(month, 2)}-01`).getDay() + 1;
+};
 
 export function isValidDate(date) {
   const isDate = Object.prototype.toString.call(date) === '[Object Date]';
@@ -128,6 +136,7 @@ export default (month = THIS_MONTH, year = THIS_YEAR) => {
   const monthDays = getMonthDays(month, year);
   const monthFirstDay = getMonthFirstDay(month, year);
 
+  console.log(monthFirstDay);
   // 2. get number of days from prev and next month to be displayed
   const daysFromPrevMonth = monthFirstDay - 1;
   const daysFromNextMonth =
