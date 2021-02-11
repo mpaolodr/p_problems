@@ -28,18 +28,21 @@ import {
 } from './Calendar.styles';
 
 const Calendar = (props) => {
+  const { date, handleDateChange } = props;
+  const [tempYear, setTempYear] = useState(date.getFullYear());
   const [currentDate, setCurrentDate] = useState(() => {
-    const isDateObject = isValidDate(props.date);
-    const _date = isDateObject ? props.date : new Date();
+    const isDateObject = isValidDate(date);
+    const _date = isDateObject ? date : new Date();
 
     return {
-      current: isDateObject ? props.date : null,
+      current: isDateObject ? date : null,
       month: +_date.getMonth() + 1,
       year: _date.getFullYear(),
       today: new Date(),
     };
   });
-  const prevDate = usePrevious(props.date);
+
+  const prevDate = usePrevious(date);
 
   const resolveStateFromDate = (date) => {
     const isDateObject = isValidDate(date);
@@ -59,30 +62,30 @@ const Calendar = (props) => {
     const ms = tomorrow - now;
 
     setCurrentDate({ ...currentDate, today: new Date() });
+  }, [date]);
 
-    if (props.date !== prevDate) {
-      const { date, onDateChanged } = props;
-      const prevdate = prevDate;
+  const changeYear = (e) => {
+    const value = e.target.value;
 
-      const dateMatch = date === prevdate || isSameDay(date, prevdate);
+    setTempYear(value);
 
-      !dateMatch &&
-        setCurrentDate(resolveStateFromDate(date), () => {
-          typeof onDateChanged === 'function' && onDateChanged(date);
-        });
+    if (value.length === 0) {
+      setCurrentDate({ ...currentDate });
     }
-  }, [props.date]);
+    if (value.length === 4) {
+      setCurrentDate({ ...currentDate, year: value });
+    }
+  };
 
   const goToDate = (date) => (event) => {
     event && event.preventDefault();
 
     const { current } = currentDate;
-    const { onDateChanged } = props;
 
-    !(current && isSameDay(date, current)) &&
-      setCurrentDate(resolveStateFromDate(date), () => {
-        typeof onDateChanged === 'function' && onDateChanged(date);
-      });
+    if (!(current && isSameDay(date, current))) {
+      setCurrentDate(resolveStateFromDate(date));
+      handleDateChange(date);
+    }
   };
 
   const goToPreviousMonth = () => {
@@ -143,7 +146,14 @@ const Calendar = (props) => {
         />
 
         <CalendarMonth className='calendar-month'>
-          {monthName} {year}
+          {monthName}{' '}
+          <input
+            className='input-year'
+            type='text'
+            value={tempYear}
+            onChange={changeYear}
+            required
+          />
         </CalendarMonth>
 
         <ArrowRight
@@ -181,6 +191,9 @@ const Calendar = (props) => {
             const _date = new Date(date.join('-'));
 
             const isToday = isSameDay(_date, today);
+            {
+              /* console.log(_date, today, 'COMPARE'); */
+            }
             const isCurrent = current && isSameDay(_date, current);
             const isMonth =
               month &&

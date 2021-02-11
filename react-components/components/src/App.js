@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Calendar from './components/Calendar';
+import Datepicker from './components/Datepicker';
 
 function App() {
+  const [date, setDate] = useState('02-10-2021');
+
+  console.log(date, 'FROM APP');
   return (
     <div className='App'>
-      <Calendar />
+      <Datepicker label='Date of Birth' date={date} onDateChanged={setDate} />
     </div>
   );
 }
