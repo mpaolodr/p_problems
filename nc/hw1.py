@@ -106,15 +106,15 @@ def csSchoolYearsAndGroups(years, groups):
 print(csSchoolYearsAndGroups(700, 25))
 
 
-def csMakeItJazzy(chords):
+# def csMakeItJazzy(chords):
 
-    for i in range(len(chords)):
+#     for i in range(len(chords)):
 
-        if chords[i][-1] != "7":
+#         if chords[i][-1] != "7":
 
-            chords[i] = chords[i] + "7"
+#             chords[i] = chords[i] + "7"
 
-    return chords
+#     return chords
 
 
 def csMakeItJazzy(chords):
