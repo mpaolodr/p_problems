@@ -124,8 +124,11 @@ const Calendar = (props) => {
 
   const getCalendarDates = () => {
     const { current, month, year } = currentDate;
+
     const calendarMonth = month || +current.getMonth() + 1;
     const calendarYear = year || current.getFullYear();
+
+    console.log(calendarMonth, month, calendarYear, year);
 
     return calendar(calendarMonth, calendarYear);
   };

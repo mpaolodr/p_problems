@@ -22,7 +22,7 @@ const Datepicker = (props) => {
   const prevDate = usePrevious(date);
 
   const toggleCalendar = () => {
-    console.log(calendarOpen);
+    // console.log(calendarOpen);
     setCalendarOpen(!calendarOpen);
   };
 
