@@ -10,31 +10,30 @@ const bounce = keyframes`
 }
 
 100% {
-    transform: translateY(-20px)
+    transform: translateY(-50%)
 }
 
 `;
 
 const LdrContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
+  justify-content: center;
+  align-items: center;
+
   & > :not(:last-child) {
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
   }
 
   .first {
-    animation: ${bounce} 0.5s infinite alternate;
+    animation: ${bounce} 0.3s infinite alternate;
   }
 
   .second {
-    animation: ${bounce} 0.5s infinite alternate 0.25s;
+    animation: ${bounce} 0.3s infinite alternate 0.25s;
   }
 
   .third {
-    animation: ${bounce} 0.5s infinite alternate 0.5s;
+    animation: ${bounce} 0.3s infinite alternate 0.5s;
   }
 `;
 

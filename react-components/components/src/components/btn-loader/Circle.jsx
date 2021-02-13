@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Circle = styled.div`
-  width: 1em;
-  height: 1em;
+  width: 0.8em;
+  height: 0.8em;
   border-radius: 50%;
   background: ${(props) => props.color};
 `;
