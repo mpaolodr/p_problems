@@ -17,26 +17,47 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <Datepicker label='Date of Birth' date={date} onDateChanged={setDate} /> */}
-      {/* <div
+      <div
+        className='testContainer'
         style={{
-          fontSize: '1.5rem',
-          height: '100vh',
+          outline: '2px solid blue',
+          height: '20vh',
+          width: '50%',
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: 'wrap',
         }}
       >
-        <BtnLoader color='black' />
-      </div> */}
+        <div
+          className='box1'
+          style={{
+            flex: '0 0 20%',
+            marginRight: 'auto',
+            outline: '2px solid black',
+          }}
+        >
+          box 1
+        </div>
 
-      <button
-        onClick={toggleLoading}
-        style={{
-          fontSize: '1rem',
-          padding: '0.5em 0.8em',
-          background: 'gray',
-        }}
-      >
-        {loading ? <BtnLoader color='#fff' /> : 'Click to load'}
-      </button>
+        <div
+          className='box2'
+          style={{
+            display: 'none',
+            flex: '0 0 75%',
+            outline: '2px solid tomato',
+          }}
+        >
+          box2
+        </div>
+
+        <div
+          className='box3'
+          style={{ flex: '0 0 75%', outline: '2px solid green' }}
+        >
+          box3
+        </div>
+      </div>
     </div>
   );
 }
