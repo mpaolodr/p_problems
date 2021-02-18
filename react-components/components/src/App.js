@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Datepicker from './components/Datepicker';
 import BtnLoader from './components/btn-loader/BtnLoader';
 
+import Test from './components/test';
+
 const TextContainer = styled.div`
   border: 2px solid #cad1cf;
   width: 30%;
@@ -32,7 +34,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [sHeight, setSHeight] = useState(null);
 
-  console.log('SHEIGHT: ', sHeight);
+  const [text, setText] = useState('');
+
+  console.log(text);
 
   const resize = (e) => {
     if (!sHeight) {
@@ -49,9 +53,11 @@ function App() {
 
   return (
     <div className='App'>
-      <TextContainer className='textarea-container'>
+      {/* <TextContainer className='textarea-container'>
         <TextArea rows='1' onChange={resize}></TextArea>
-      </TextContainer>
+      </TextContainer> */}
+
+      <Test text={text} changer={setText} />
     </div>
   );
 }
