@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import store from './redux/store';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
@@ -30,27 +32,7 @@ const TextArea = styled.textarea`
 `;
 
 function App() {
-  const [date, setDate] = useState('02-10-2021');
-  const [loading, setLoading] = useState(false);
-  const [sHeight, setSHeight] = useState(null);
-
-  const [text, setText] = useState('');
-
-  console.log(text);
-
-  const resize = (e) => {
-    if (!sHeight) {
-      setSHeight(e.target.scrollHeight);
-    } else {
-      if (sHeight !== e.target.scrollHeight) {
-        e.target.attributes.rows.nodeValue =
-          parseInt(e.target.attributes.rows.nodeValue) + 1;
-        setSHeight(e.target.scrollHeight);
-        console.log(e);
-      }
-    }
-  };
-
+  store.dispatch({ type: 'todos/todosAdded', payload: 'Added Enchancer' });
   return (
     <div className='App'>
       <h2>App</h2>

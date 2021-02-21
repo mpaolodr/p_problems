@@ -12,8 +12,10 @@
 import { combineReducers } from 'redux';
 import todosReducer from './todoSlice';
 import filtersReducer from './filtersSlice';
+import userReducer from './userSlice';
 
 const rootReducer = combineReducers({
+  user: userReducer,
   todos: todosReducer,
   filters: filtersReducer,
 });

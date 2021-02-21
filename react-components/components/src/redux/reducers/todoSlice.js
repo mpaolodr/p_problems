@@ -22,7 +22,7 @@ function nextTodoId(todos) {
   return maxId + 1;
 }
 
-const todosReducer = (state = initialState, action) => {
+export const todosReducer = (state = initState, action) => {
   switch (action.type) {
     case 'todos/todosAdded':
       return [
@@ -50,3 +50,5 @@ const todosReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default todosReducer;
