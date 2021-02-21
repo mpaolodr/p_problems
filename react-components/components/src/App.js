@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import store from './redux/store';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { selectTodoIds } from './redux/reducers/todoSlice';
+import { changeUserId, addUser } from './redux/reducers/userSlice';
+import { todosAdded } from './redux/reducers/todoSlice';
 
 import styled from 'styled-components';
 
@@ -32,12 +35,50 @@ const TextArea = styled.textarea`
 `;
 
 function App() {
-  store.dispatch({ type: 'todos/todosAdded', payload: 'Added Enchancer' });
+  // const selectTodoIds = (state) => state.todos.map((todo) => todo.id);
+
+  // const getIds = useSelector(selectTodoIds);
+  const dispatch = useDispatch();
+
+  // dispatch({ type: 'todos/todosAdded', payload: 'Test Something' });
+
+  console.log('STATE: ', store.getState());
+
+  // const todos = useSelector((state) => state.todos);
+
+  // console.log(todos);
+
+  dispatch(changeUserId(2));
+
+  console.log('AFTER DISPATCH: ', store.getState());
+
+  dispatch(addUser(3, 'TABBY TOOLKIT'));
+  console.log('AFTER DISPATCH: ', store.getState());
+
+  // const renderedListItems = getIds.map((todoId) => {
+  //   return (
+  //     <h2 key={todoId} id={todoId}>
+  //       TODO
+  //     </h2>
+  //   );
+  // });
+
   return (
     <div className='App'>
-      <h2>App</h2>
+      {/* {renderedListItems} */}
+      <h2>Test</h2>
     </div>
   );
 }
 
 export default App;
+
+// MEMOIZED Selectors are selectors that save the most recent result value and if you call them multiple times
+// with the same inputs, it wil return the same result value
+// if you call them with DIFFERENT INPUTS, they will recalculate a new result value and cache it and return the new result
+
+// The Reselect library provides a createSelector API that will generate memoized selector functions.
+// createSelector accepts one or more "input selector" functions as arguments, plus an "output selector",
+// and returns the new selector function. Every time you call the selector:
+
+// STUDY MEMOIZED SELECTORS
