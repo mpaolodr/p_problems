@@ -53,11 +53,7 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <TextContainer className='textarea-container'>
-        <TextArea rows='1' onChange={resize}></TextArea>
-      </TextContainer> */}
-
-      <Test text={text} changer={setText} />
+      <h2>App</h2>
     </div>
   );
 }
