@@ -1,9 +1,4 @@
 import React, { useState } from 'react';
-import store from './redux/store';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { selectTodoIds } from './redux/reducers/todoSlice';
-import { changeUserId, addUser } from './redux/reducers/userSlice';
-import { todosAdded } from './redux/reducers/todoSlice';
 
 import styled from 'styled-components';
 
@@ -35,37 +30,8 @@ const TextArea = styled.textarea`
 `;
 
 function App() {
-  // const selectTodoIds = (state) => state.todos.map((todo) => todo.id);
-
-  // const getIds = useSelector(selectTodoIds);
-  const dispatch = useDispatch();
-
-  // dispatch({ type: 'todos/todosAdded', payload: 'Test Something' });
-
-  console.log('STATE: ', store.getState());
-
-  // const todos = useSelector((state) => state.todos);
-
-  // console.log(todos);
-
-  dispatch(changeUserId(2));
-
-  console.log('AFTER DISPATCH: ', store.getState());
-
-  dispatch(addUser(3, 'TABBY TOOLKIT'));
-  console.log('AFTER DISPATCH: ', store.getState());
-
-  // const renderedListItems = getIds.map((todoId) => {
-  //   return (
-  //     <h2 key={todoId} id={todoId}>
-  //       TODO
-  //     </h2>
-  //   );
-  // });
-
   return (
     <div className='App'>
-      {/* {renderedListItems} */}
       <h2>Test</h2>
     </div>
   );
