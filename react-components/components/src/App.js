@@ -29,6 +29,33 @@ const TextArea = styled.textarea`
   }
 `;
 
+const obj = {
+  success: false,
+  error: {
+    message: 'invalid input syntax for type integer: ""',
+    length: 101,
+    name: 'QueryFailedError',
+    severity: 'ERROR',
+    code: '22P02',
+    file: 'numutils.c',
+    line: '259',
+    routine: 'pg_strtoint32',
+    query:
+      'UPDATE "users" SET "genderId" = $2, "date_of_birth" = $3, "first_name" = $4, "last_name" = $5, "city" = $6, "region" = $7, "country" = $8, "account_image_url" = $9, "updatedAt" = CURRENT_TIMESTAMP WHERE "id" IN ($1)',
+    parameters: [
+      '1',
+      '',
+      '1992-02-05T00:00:00.000Z',
+      'Marlon',
+      'Del Rosario',
+      'Springvale',
+      '',
+      'USA',
+      'https://account-microservice.s3.ca-central-1.amazonaws.com/ab9dae0d-5b1a-4de4-9d79-141595548819-coffee.jpg',
+    ],
+  },
+};
+
 function App() {
   return (
     <div className='App'>
