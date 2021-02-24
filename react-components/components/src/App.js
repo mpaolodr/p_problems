@@ -5,11 +5,19 @@ import styled from 'styled-components';
 import Datepicker from './components/Datepicker';
 import BtnLoader from './components/btn-loader/BtnLoader';
 import ReactDp from './components/ReactDP';
+import Grid from './components/Grid';
 
 function App() {
+  const photos = [
+    'https://res.cloudinary.com/mpaolodr/image/upload/v1606105334/sample.jpg',
+    'https://res.cloudinary.com/mpaolodr/image/upload/v1600361221/ne4xxl26ltcuagldepao.jpg',
+    'https://res.cloudinary.com/mpaolodr/image/upload/v1582594359/samples/bike.jpg',
+    'https://res.cloudinary.com/mpaolodr/image/upload/v1582594357/samples/sheep.jpg',
+  ];
+
   return (
     <div className='App' style={{ textAlign: 'center' }}>
-      <ReactDp />
+      <Grid photos={photos} />
     </div>
   );
 }
