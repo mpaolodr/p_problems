@@ -7,6 +7,7 @@ import BtnLoader from './components/btn-loader/BtnLoader';
 import ReactDp from './components/ReactDP';
 import Grid from './components/Grid';
 import Carousel from './components/carousel/Carousel';
+import AnotherOne from './components/another-carousel/AnotherOne';
 
 function App() {
   const photos = [
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Carousel photos={photos} />
+      <AnotherOne photos={photos} />
     </div>
   );
 }
