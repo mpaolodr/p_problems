@@ -6,6 +6,7 @@ import Datepicker from './components/Datepicker';
 import BtnLoader from './components/btn-loader/BtnLoader';
 import ReactDp from './components/ReactDP';
 import Grid from './components/Grid';
+import Carousel from './components/carousel/Carousel';
 
 function App() {
   const photos = [
@@ -16,8 +17,8 @@ function App() {
   ];
 
   return (
-    <div className='App' style={{ textAlign: 'center' }}>
-      <Grid photos={photos} />
+    <div className='App'>
+      <Carousel photos={photos} />
     </div>
   );
 }
