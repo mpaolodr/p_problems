@@ -11,7 +11,7 @@ const ComponentContainer = styled.div`
 
 const CarouselContainer = styled.div`
   margin: auto;
-  width: 40%;
+  width: 100%;
   height: 60%;
   position: relative;
 `;
@@ -67,6 +67,37 @@ const AnotherOne = (props) => {
   const { photos } = props;
 
   const [current, setCurrent] = useState(0);
+  const [startPosition, setStartPosition] = useState(0);
+  const [endPosition, setEndPosition] = useState(0);
+
+  console.log(startPosition, endPosition);
+
+  const touchStart = (e) => {
+    const startPos = e.touches[0].clientX;
+
+    setStartPosition(startPos);
+  };
+
+  const touchMove = (e) => {
+    setEndPosition(e.touches[0].clientX);
+  };
+
+  const touchEnd = (e) => {
+    const currentPos = startPosition - endPosition;
+
+    if (currentPos > 0) {
+      setCurrent((current + 1) % photos.length);
+    } else if (currentPos < 0) {
+      if (current === 0) {
+        setCurrent(photos.length - 1);
+      } else {
+        setCurrent(current - 1);
+      }
+    }
+
+    setStartPosition(0);
+    setEndPosition(0);
+  };
 
   const onNextClick = () => {
     setCurrent((current + 1) % photos.length);
@@ -78,7 +109,11 @@ const AnotherOne = (props) => {
 
   return (
     <ComponentContainer>
-      <CarouselContainer>
+      <CarouselContainer
+        onTouchStart={touchStart}
+        onTouchMove={touchMove}
+        onTouchEnd={touchEnd}
+      >
         <ImgContainer>
           <img src={photos[current]} alt='test' />
         </ImgContainer>
