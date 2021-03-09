@@ -1,7 +1,34 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, usEffect, useEffect } from 'react';
+import styled, { keyframes, css } from 'styled-components';
 
 // I don't code like this. Just to lazy to create another folder for styles😂
+
+const enter = keyframes`
+
+  0% {
+    opacity: 0;
+  }
+
+
+  
+  100% {
+    opacity: 1;
+  }
+
+`;
+const exit = keyframes`
+
+  0% {
+    opacity: 1;
+  }
+
+
+  100% {
+    opacity: 0;
+  }
+
+`;
+
 const ComponentContainer = styled.div`
   width: 100%;
   height: 100vh;
@@ -11,7 +38,7 @@ const ComponentContainer = styled.div`
 
 const CarouselContainer = styled.div`
   margin: auto;
-  width: 100%;
+  width: 50%;
   height: 60%;
   position: relative;
 `;
@@ -20,12 +47,23 @@ const ImgContainer = styled.div`
   width: 80%;
   height: 80%;
   margin: 0 auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 
   img {
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    animation: ${exit} 0.5s ease;
+    opacity: 0;
+  }
+
+  img.active {
+    opacity: 1;
+    animation: ${enter} 0.5s ease;
   }
 `;
 
@@ -70,9 +108,8 @@ const AnotherOne = (props) => {
   const [startPosition, setStartPosition] = useState(0);
   const [endPosition, setEndPosition] = useState(0);
 
-  console.log(startPosition, endPosition);
-
   const touchStart = (e) => {
+    console.log(e.touches);
     const startPos = e.touches[0].clientX;
 
     setStartPosition(startPos);
@@ -107,6 +144,14 @@ const AnotherOne = (props) => {
     setCurrent((current - 1) % photos.length);
   };
 
+  useEffect(() => {
+    const nextPic = setTimeout(() => {
+      onNextClick();
+    }, 5000);
+
+    return () => clearTimeout(nextPic);
+  }, [current]);
+
   return (
     <ComponentContainer>
       <CarouselContainer
@@ -114,8 +159,25 @@ const AnotherOne = (props) => {
         onTouchMove={touchMove}
         onTouchEnd={touchEnd}
       >
+        {/* <ImgContainer>
+          <img
+            current={active[photos[current]]}
+            src={photos[current]}
+            alt='test'
+          />
+        </ImgContainer> */}
         <ImgContainer>
-          <img src={photos[current]} alt='test' />
+          {photos.map((p, i) => {
+            return (
+              <img
+                className={i === current ? 'active' : ''}
+                test={'TEST'}
+                key={i}
+                src={p}
+                alt={p}
+              />
+            );
+          })}
         </ImgContainer>
 
         <NextBtn onClick={onNextClick}>Next</NextBtn>
