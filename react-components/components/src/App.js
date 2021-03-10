@@ -9,6 +9,10 @@ import ReactDp from './components/ReactDP';
 import Grid from './components/Grid';
 import Carousel from './components/carousel/Carousel';
 import AnotherOne from './components/another-carousel/AnotherOne';
+import Page from './components/route-test/Page';
+import Home from './components/route-test/Home';
+
+import AnimatedSwitch from './components/AnimatedSwitch';
 
 function App() {
   const photos = [
@@ -22,13 +26,16 @@ function App() {
     <div className='App'>
       <nav>
         <Link to='/'>Home</Link>
-        <Link to='/test'>Test</Link>
+        <Link to='/page'>Page</Link>
       </nav>
 
-      <Switch>
-        <Route path='/' />
-        <Route path='/test' />
-      </Switch>
+      {/* <Switch>
+        <Route path='/page' className={`fade fade-${state}`} component={Page} />
+
+        <Route path='/' component={Home} />
+      </Switch> */}
+
+      <AnimatedSwitch />
     </div>
   );
 }
