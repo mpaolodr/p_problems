@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -19,7 +20,15 @@ function App() {
 
   return (
     <div className='App'>
-      <AnotherOne photos={photos} />
+      <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/test'>Test</Link>
+      </nav>
+
+      <Switch>
+        <Route path='/' />
+        <Route path='/test' />
+      </Switch>
     </div>
   );
 }
