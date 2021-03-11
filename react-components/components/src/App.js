@@ -22,20 +22,11 @@ function App() {
     'https://res.cloudinary.com/mpaolodr/image/upload/v1582594357/samples/sheep.jpg',
   ];
 
+  const [pos, setPos] = useState({ top: 0, bottom: 0, left: 0, right: 0 });
+  // console.log('POS: ', pos);
   return (
     <div className='App'>
-      <nav>
-        <Link to='/'>Home</Link>
-        <Link to='/page'>Page</Link>
-      </nav>
-
-      {/* <Switch>
-        <Route path='/page' className={`fade fade-${state}`} component={Page} />
-
-        <Route path='/' component={Home} />
-      </Switch> */}
-
-      <AnimatedSwitch />
+      <h2>TEst</h2>
     </div>
   );
 }
